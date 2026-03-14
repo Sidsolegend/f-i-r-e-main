@@ -77,7 +77,7 @@ export default function Scene1Opening() {
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse 80% 60% at 50% 40%, hsla(227,40%,15%,0.4) 0%, hsl(0,0%,4%) 70%)",
+            background: "radial-gradient(ellipse 80% 60% at 50% 40%, hsla(0,0%,15%,0.4) 0%, hsl(0,0%,0%) 70%)",
           }}
         />
 

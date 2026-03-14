@@ -121,7 +121,7 @@
   }
 
   .subtle-glow {
-    box-shadow: 0 0 80px -20px hsl(227 70% 60% / 0.15);
+    box-shadow: 0 0 80px -20px hsl(0 0% 53% / 0.2);
   }
 }
 
