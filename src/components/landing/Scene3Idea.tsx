@@ -1,10 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  ClubCard, EventCard, AnnouncementItem, CategoryFilter, PlatformNav,
-  CLUBS_DATA, EVENTS_DATA, ANNOUNCEMENTS_DATA,
-} from "./FIREComponents";
+import previewHero from "@/assets/preview-hero-real.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +14,7 @@ export default function Scene3Idea() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=300%",
+          end: "+=250%",
           pin: true,
           scrub: 1,
         },
@@ -25,12 +22,9 @@ export default function Scene3Idea() {
 
       tl.fromTo(".s3-text", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.2 })
         .to(".s3-text", { y: -100, scale: 0.9, opacity: 0.2, duration: 1.5 }, "+=0.5")
-        // Left panel: clubs directory preview
-        .fromTo(".s3-panel-left", { x: "-100%", opacity: 0 }, { x: "-30%", opacity: 0.85, duration: 1.5 }, "-=1")
-        // Right panel: events listing preview
-        .fromTo(".s3-panel-right", { x: "100%", opacity: 0 }, { x: "30%", opacity: 0.85, duration: 1.5 }, "-=1.5")
-        // Center: full nav + interface preview rises
-        .fromTo(".s3-panel-center", { y: "60%", opacity: 0, scale: 0.85 }, { y: "0%", opacity: 1, scale: 1, duration: 1.5 }, "-=1");
+        .fromTo(".s3-panel-left", { x: "-100%", opacity: 0 }, { x: "-30%", opacity: 0.7, duration: 1.5 }, "-=1")
+        .fromTo(".s3-panel-right", { x: "100%", opacity: 0 }, { x: "30%", opacity: 0.7, duration: 1.5 }, "-=1.5")
+        .fromTo(".s3-panel-center", { y: "60%", opacity: 0, scale: 0.8 }, { y: "0%", opacity: 1, scale: 1, duration: 1.5 }, "-=1");
     }, containerRef);
 
     return () => ctx.revert();
@@ -50,39 +44,28 @@ export default function Scene3Idea() {
         <span className="text-gradient-accent">lived in one place?</span>
       </h2>
 
-      {/* Left panel: Clubs directory */}
-      <div className="s3-panel-left absolute top-1/2 left-0 -translate-y-1/2 w-80 rounded-2xl border border-border/30 bg-card/80 backdrop-blur-sm opacity-0 will-change-transform overflow-hidden">
-        <div className="p-4 border-b border-border/20">
-          <h3 className="text-sm font-semibold text-foreground mb-3">Clubs Directory</h3>
-          <CategoryFilter />
-        </div>
-        <div className="p-3 space-y-3">
-          {CLUBS_DATA.slice(0, 2).map((club) => (
-            <ClubCard key={club.name} {...club} className="w-full" />
-          ))}
+      {/* Abstract UI panels */}
+      <div className="s3-panel-left absolute top-1/2 left-0 -translate-y-1/2 w-72 h-96 rounded-2xl border border-border/30 bg-card/50 opacity-0 will-change-transform overflow-hidden">
+        <div className="p-4 space-y-3">
+          <div className="h-3 w-20 bg-muted rounded-full" />
+          <div className="h-2 w-32 bg-muted/60 rounded-full" />
+          <div className="mt-6 space-y-2">
+            {[1,2,3,4].map(i => <div key={i} className="h-10 bg-muted/40 rounded-lg" />)}
+          </div>
         </div>
       </div>
 
-      {/* Right panel: Events listing */}
-      <div className="s3-panel-right absolute top-1/2 right-0 -translate-y-1/2 w-80 rounded-2xl border border-border/30 bg-card/80 backdrop-blur-sm opacity-0 will-change-transform overflow-hidden">
-        <div className="p-4 border-b border-border/20">
-          <h3 className="text-sm font-semibold text-foreground mb-1">Upcoming Events</h3>
-        </div>
-        <div className="p-3 space-y-3">
-          {EVENTS_DATA.map((event) => (
-            <EventCard key={event.title} {...event} className="w-full" />
-          ))}
+      <div className="s3-panel-right absolute top-1/2 right-0 -translate-y-1/2 w-72 h-96 rounded-2xl border border-border/30 bg-card/50 opacity-0 will-change-transform overflow-hidden">
+        <div className="p-4 space-y-3">
+          <div className="h-3 w-16 bg-primary/30 rounded-full" />
+          <div className="mt-6 grid grid-cols-2 gap-2">
+            {[1,2,3,4,5,6].map(i => <div key={i} className="h-16 bg-muted/30 rounded-lg" />)}
+          </div>
         </div>
       </div>
 
-      {/* Center: Platform interface preview */}
-      <div className="s3-panel-center absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] max-w-4xl rounded-t-2xl border border-border/30 border-b-0 overflow-hidden opacity-0 will-change-transform subtle-glow">
-        <PlatformNav />
-        <div className="p-6 flex gap-4">
-          {ANNOUNCEMENTS_DATA.map((ann) => (
-            <AnnouncementItem key={ann.title} {...ann} className="w-full" />
-          ))}
-        </div>
+      <div className="s3-panel-center absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] max-w-3xl rounded-t-2xl border border-border/30 border-b-0 overflow-hidden opacity-0 will-change-transform subtle-glow">
+        <img src={previewHero} alt="FIRE Platform" className="w-full" loading="lazy" />
       </div>
     </section>
   );

@@ -1,9 +1,15 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ClubCard, EventCard, AnnouncementItem, CLUBS_DATA, EVENTS_DATA, ANNOUNCEMENTS_DATA } from "./FIREComponents";
+import { Users, Calendar, Megaphone } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const cards = [
+  { icon: Users, label: "Clubs" },
+  { icon: Calendar, label: "Events" },
+  { icon: Megaphone, label: "Announcements" },
+];
 
 export default function Scene2Problem() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,7 +20,7 @@ export default function Scene2Problem() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=350%",
+          end: "+=300%",
           pin: true,
           scrub: 1,
         },
@@ -24,12 +30,9 @@ export default function Scene2Problem() {
         .to(".s2-line1", { opacity: 0.3, y: -30, duration: 0.8 }, "+=0.5")
         .fromTo(".s2-line2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, "-=0.3")
         .to({}, { duration: 0.5 })
-        // Club card drifts in from upper-left
-        .fromTo(".s2-club", { opacity: 0, x: -180, y: -60, rotation: -12, scale: 0.85 }, { opacity: 1, x: -240, y: -100, rotation: -4, scale: 0.9, duration: 1.4 }, "-=0.2")
-        // Event card drifts in from right
-        .fromTo(".s2-event", { opacity: 0, x: 200, y: 60, rotation: 10, scale: 0.85 }, { opacity: 1, x: 220, y: 40, rotation: 3, scale: 0.9, duration: 1.4 }, "-=1")
-        // Announcement drifts in from bottom
-        .fromTo(".s2-announce", { opacity: 0, y: 120, x: -60, rotation: -6, scale: 0.85 }, { opacity: 1, y: 100, x: -40, rotation: -2, scale: 0.9, duration: 1.4 }, "-=1")
+        .fromTo(".s2-card-0", { opacity: 0, x: -120, y: 40, rotation: -8 }, { opacity: 1, x: -200, y: -20, rotation: -3, duration: 1 }, "-=0.2")
+        .fromTo(".s2-card-1", { opacity: 0, y: 80 }, { opacity: 1, y: 30, duration: 1 }, "-=0.7")
+        .fromTo(".s2-card-2", { opacity: 0, x: 120, y: 40, rotation: 8 }, { opacity: 1, x: 200, y: -40, rotation: 3, duration: 1 }, "-=0.7")
         .to(".s2-line2", { opacity: 0.15, duration: 0.5 }, "-=0.3");
     }, containerRef);
 
@@ -50,27 +53,21 @@ export default function Scene2Problem() {
         </div>
       </div>
 
-      {/* Real FIRE platform cards floating in like scattered information */}
-      <div
-        className="s2-club absolute opacity-0 will-change-transform pointer-events-none"
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-      >
-        <ClubCard {...CLUBS_DATA[0]} />
-      </div>
-
-      <div
-        className="s2-event absolute opacity-0 will-change-transform pointer-events-none"
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-      >
-        <EventCard {...EVENTS_DATA[0]} />
-      </div>
-
-      <div
-        className="s2-announce absolute opacity-0 will-change-transform pointer-events-none"
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-      >
-        <AnnouncementItem {...ANNOUNCEMENTS_DATA[0]} />
-      </div>
+      {/* Floating cards */}
+      {cards.map((card, i) => (
+        <div
+          key={card.label}
+          className={`s2-card-${i} absolute glass-card px-6 py-5 flex items-center gap-3 opacity-0 will-change-transform`}
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <card.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+          <span className="text-sm text-foreground font-medium tracking-wide">{card.label}</span>
+        </div>
+      ))}
     </section>
   );
 }
