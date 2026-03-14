@@ -1,28 +1,28 @@
 import HiddenNav from "@/components/landing/HiddenNav";
-import OpeningScene from "@/components/landing/OpeningScene";
-import ProblemSection from "@/components/landing/ProblemSection";
-import VisionSection from "@/components/landing/VisionSection";
-import FrameworkSection from "@/components/landing/FrameworkSection";
-import PlatformSection from "@/components/landing/PlatformSection";
-import TeamSection from "@/components/landing/TeamSection";
-import ProcessSection from "@/components/landing/ProcessSection";
-import ImpactSection from "@/components/landing/ImpactSection";
-import FinalReveal from "@/components/landing/FinalReveal";
+import Scene1Opening from "@/components/landing/Scene1Opening";
+import Scene2Problem from "@/components/landing/Scene2Problem";
+import Scene3Idea from "@/components/landing/Scene3Idea";
+import Scene4Framework from "@/components/landing/Scene4Framework";
+import Scene5Platform from "@/components/landing/Scene5Platform";
+import Scene6Team from "@/components/landing/Scene6Team";
+import Scene7Impact from "@/components/landing/Scene7Impact";
+import Scene8Reveal from "@/components/landing/Scene8Reveal";
+import Scene9CTA from "@/components/landing/Scene9CTA";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       <HiddenNav />
-      <OpeningScene />
-      <ProblemSection />
-      <VisionSection />
-      <FrameworkSection />
-      <PlatformSection />
-      <TeamSection />
-      <ProcessSection />
-      <ImpactSection />
-      <FinalReveal />
+      <Scene1Opening />
+      <Scene2Problem />
+      <Scene3Idea />
+      <Scene4Framework />
+      <Scene5Platform />
+      <Scene6Team />
+      <Scene7Impact />
+      <Scene8Reveal />
+      <Scene9CTA />
       <Footer />
     </div>
   );
