@@ -35,7 +35,7 @@ export default function Scene3Idea() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse 70% 50% at 50% 50%, hsla(227,30%,12%,0.5) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 70% 50% at 50% 50%, hsla(0,0%,12%,0.5) 0%, transparent 70%)",
         }}
       />
 
