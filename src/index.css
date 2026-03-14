@@ -97,7 +97,7 @@
   }
 
   .cta-primary:hover {
-    background: hsl(227 70% 65%);
+    background: hsl(0 0% 90%);
     transform: scale(1.03);
   }
 
