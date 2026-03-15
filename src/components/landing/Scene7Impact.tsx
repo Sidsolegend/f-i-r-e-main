@@ -19,8 +19,8 @@ export default function Scene7Impact() {
         },
       });
 
-      tl.fromTo(".s7-heading", { opacity: 0, y: 50, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.5 })
-        .fromTo(".s7-body", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, "-=0.5");
+      tl.fromTo(".s7-heading", { opacity: 0, y: 60, scale: 0.93 }, { opacity: 1, y: 0, scale: 1, duration: 1.8, ease: "power3.out" })
+        .fromTo(".s7-body", { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "-=0.6");
     }, containerRef);
 
     return () => ctx.revert();
