@@ -50,16 +50,24 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
+    cursor: none;
   }
 
   html {
     scroll-behavior: auto;
+  }
+
+  @media (pointer: coarse) {
+    *, body {
+      cursor: auto;
+    }
   }
 }
 
