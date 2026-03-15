@@ -19,8 +19,8 @@ export default function Scene7Impact() {
         },
       });
 
-      tl.fromTo(".s7-heading", { opacity: 0, y: 50, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.5 })
-        .fromTo(".s7-body", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, "-=0.5");
+      tl.fromTo(".s7-heading", { opacity: 0, y: 60, scale: 0.93 }, { opacity: 1, y: 0, scale: 1, duration: 1.8, ease: "power3.out" })
+        .fromTo(".s7-body", { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "-=0.6");
     }, containerRef);
 
     return () => ctx.revert();
@@ -33,7 +33,7 @@ export default function Scene7Impact() {
           Equal access to<br />
           <span className="text-gradient-accent">opportunity.</span>
         </h2>
-        <p className="s7-body mt-8 text-base md:text-lg text-muted-foreground max-w-xl font-light leading-relaxed opacity-0 will-change-transform">
+        <p className="s7-body mt-10 text-base md:text-lg text-muted-foreground max-w-xl font-light leading-relaxed opacity-0 will-change-transform">
           FIRE helps every student discover what their school has to offer — reducing opportunity inequality across education.
         </p>
       </div>

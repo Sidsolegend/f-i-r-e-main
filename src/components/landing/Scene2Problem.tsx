@@ -26,14 +26,14 @@ export default function Scene2Problem() {
         },
       });
 
-      tl.fromTo(".s2-line1", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 })
-        .to(".s2-line1", { opacity: 0.3, y: -30, duration: 0.8 }, "+=0.5")
-        .fromTo(".s2-line2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, "-=0.3")
+      tl.fromTo(".s2-line1", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" })
+        .to(".s2-line1", { opacity: 0.3, y: -30, duration: 1 }, "+=0.5")
+        .fromTo(".s2-line2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "-=0.3")
         .to({}, { duration: 0.5 })
-        .fromTo(".s2-card-0", { opacity: 0, x: -120, y: 40, rotation: -8 }, { opacity: 1, x: -200, y: -20, rotation: -3, duration: 1 }, "-=0.2")
-        .fromTo(".s2-card-1", { opacity: 0, y: 80 }, { opacity: 1, y: 30, duration: 1 }, "-=0.7")
-        .fromTo(".s2-card-2", { opacity: 0, x: 120, y: 40, rotation: 8 }, { opacity: 1, x: 200, y: -40, rotation: 3, duration: 1 }, "-=0.7")
-        .to(".s2-line2", { opacity: 0.15, duration: 0.5 }, "-=0.3");
+        .fromTo(".s2-card-0", { opacity: 0, x: -120, y: 40, rotation: -8 }, { opacity: 1, x: -200, y: -20, rotation: -3, duration: 1.2, ease: "power2.out" }, "-=0.2")
+        .fromTo(".s2-card-1", { opacity: 0, y: 80 }, { opacity: 1, y: 30, duration: 1.2, ease: "power2.out" }, "-=0.8")
+        .fromTo(".s2-card-2", { opacity: 0, x: 120, y: 40, rotation: 8 }, { opacity: 1, x: 200, y: -40, rotation: 3, duration: 1.2, ease: "power2.out" }, "-=0.8")
+        .to(".s2-line2", { opacity: 0.15, duration: 0.6 }, "-=0.3");
     }, containerRef);
 
     return () => ctx.revert();

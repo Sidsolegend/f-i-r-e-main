@@ -1,5 +1,6 @@
 import HiddenNav from "@/components/landing/HiddenNav";
 import ScrollProgress from "@/components/landing/ScrollProgress";
+import CustomCursor from "@/components/landing/CustomCursor";
 import Scene1Opening from "@/components/landing/Scene1Opening";
 import Scene2Problem from "@/components/landing/Scene2Problem";
 import Scene3Idea from "@/components/landing/Scene3Idea";
@@ -14,7 +15,8 @@ import Footer from "@/components/landing/Footer";
 
 const Index = () => {
   return (
-    <div className="bg-background">
+    <div className="bg-background grain-overlay">
+      <CustomCursor />
       <ScrollProgress />
       <HiddenNav />
       <Scene1Opening />
