@@ -22,8 +22,8 @@ export default function Scene8Reveal() {
         },
       });
 
-      tl.fromTo(".s8-preview", { scale: 0.6, opacity: 0, y: 100 }, { scale: 1, opacity: 1, y: -20, duration: 2 })
-        .fromTo(".s8-buttons", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1 }, "-=0.5");
+      tl.fromTo(".s8-preview", { scale: 0.55, opacity: 0, y: 120 }, { scale: 1, opacity: 1, y: -20, duration: 2.5, ease: "power3.out" })
+        .fromTo(".s8-buttons", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "-=0.6");
     }, containerRef);
 
     return () => ctx.revert();

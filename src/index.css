@@ -99,26 +99,31 @@
   }
 
   .cta-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-sm tracking-wide transition-all duration-500;
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-sm tracking-wide;
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 0 0 0 hsl(0 0% 100% / 0);
   }
 
   .cta-primary:hover {
     background: hsl(0 0% 90%);
-    transform: scale(1.03);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px -8px hsl(0 0% 100% / 0.2);
   }
 
   .cta-outline {
-    @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-sm tracking-wide transition-all duration-500;
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-sm tracking-wide;
     border: 1px solid hsl(0 0% 25%);
     color: hsl(var(--foreground));
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .cta-outline:hover {
     border-color: hsl(0 0% 50%);
     background: hsl(0 0% 10%);
-    transform: scale(1.03);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px -8px hsl(0 0% 100% / 0.08);
   }
 
   .glass-card {

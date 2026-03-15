@@ -33,7 +33,7 @@ export default function Scene7Impact() {
           Equal access to<br />
           <span className="text-gradient-accent">opportunity.</span>
         </h2>
-        <p className="s7-body mt-8 text-base md:text-lg text-muted-foreground max-w-xl font-light leading-relaxed opacity-0 will-change-transform">
+        <p className="s7-body mt-10 text-base md:text-lg text-muted-foreground max-w-xl font-light leading-relaxed opacity-0 will-change-transform">
           FIRE helps every student discover what their school has to offer — reducing opportunity inequality across education.
         </p>
       </div>

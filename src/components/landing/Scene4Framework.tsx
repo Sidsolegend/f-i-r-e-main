@@ -30,13 +30,13 @@ export default function Scene4Framework() {
       // Title enters
       tl.fromTo(".s4-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8 });
 
-      // Each pillar slides in and takes center stage
+      // Each pillar slides in with stagger
       pillars.forEach((_, i) => {
         tl.fromTo(
           `.s4-pillar-${i}`,
-          { opacity: 0, x: i % 2 === 0 ? -100 : 100, scale: 0.9 },
-          { opacity: 1, x: 0, scale: 1, duration: 1 },
-          i === 0 ? "+=0.3" : "-=0.1"
+          { opacity: 0, x: i % 2 === 0 ? -80 : 80, y: 30, scale: 0.92 },
+          { opacity: 1, x: 0, y: 0, scale: 1, duration: 1.2, ease: "power3.out" },
+          i === 0 ? "+=0.3" : "-=0.3"
         );
       });
 

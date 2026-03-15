@@ -101,7 +101,7 @@ export default function Scene1Opening() {
 
         <p
           ref={subtitleRef}
-          className="relative z-10 mt-8 text-base md:text-lg text-muted-foreground text-center max-w-md font-light tracking-wide will-change-transform"
+          className="relative z-10 mt-10 text-base md:text-lg text-muted-foreground text-center max-w-md font-light tracking-wide leading-relaxed will-change-transform"
         >
           Equal access to opportunity in every school.
         </p>

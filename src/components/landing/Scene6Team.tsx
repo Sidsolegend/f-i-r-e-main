@@ -35,9 +35,9 @@ export default function Scene6Team() {
       team.forEach((_, i) => {
         tl.fromTo(
           `.s6-card-${i}`,
-          { opacity: 0, y: 80, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.6 },
-          i === 0 ? "+=0.2" : "-=0.35"
+          { opacity: 0, y: 60, scale: 0.92 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" },
+          i === 0 ? "+=0.2" : "-=0.45"
         );
       });
     }, containerRef);
