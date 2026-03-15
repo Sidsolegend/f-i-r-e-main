@@ -73,11 +73,17 @@ export default function Scene1Opening() {
   return (
     <section ref={containerRef} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Radial gradient background */}
+        {/* Layered radial gradient backgrounds */}
         <div
           className="absolute inset-0"
           style={{
             background: "radial-gradient(ellipse 80% 60% at 50% 40%, hsla(0,0%,15%,0.4) 0%, hsl(0,0%,0%) 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 s1-bg-glow"
+          style={{
+            background: "radial-gradient(circle 400px at 50% 45%, hsla(0,0%,25%,0.12) 0%, transparent 70%)",
           }}
         />
 

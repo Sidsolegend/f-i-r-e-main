@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BookOpen, Calendar, Megaphone, Sparkles } from "lucide-react";
+import { useTilt } from "@/hooks/use-tilt";
+import GradientLight from "./GradientLight";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +13,25 @@ const steps = [
   { icon: Megaphone, label: "Announcements", desc: "Important updates reach every student instantly." },
   { icon: Sparkles, label: "Engagement", desc: "Continuous involvement builds a thriving school community." },
 ];
+
+function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
+  const tilt = useTilt({ maxTilt: 6, scale: 1.03 });
+
+  return (
+    <div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      className={`s7p-step-${index} glass-card p-6 text-center opacity-0 will-change-transform w-48 group hover:border-primary/20 transition-all duration-500`}
+    >
+      <div className="w-11 h-11 rounded-xl bg-primary/10 mx-auto mb-3 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+        <step.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+      </div>
+      <h3 className="text-foreground font-display text-lg mb-1">{step.label}</h3>
+      <p className="text-muted-foreground text-[11px] leading-relaxed font-light">{step.desc}</p>
+    </div>
+  );
+}
 
 export default function Scene7Process() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,31 +45,40 @@ export default function Scene7Process() {
           end: "+=300%",
           pin: true,
           scrub: 1,
+          snap: { snapTo: 1, duration: 0.4, ease: "power2.inOut" },
         },
       });
 
-      tl.fromTo(".s7p-label", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6 });
+      tl.fromTo(".s7p-label", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
 
       steps.forEach((_, i) => {
-        // Step card
         tl.fromTo(
           `.s7p-step-${i}`,
           { opacity: 0, x: i % 2 === 0 ? -60 : 60, scale: 0.9 },
-          { opacity: 1, x: 0, scale: 1, duration: 0.8 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: "power3.out" },
           i === 0 ? "+=0.2" : "+=0.1"
         );
-        // Connector line after each step except last
         if (i < steps.length - 1) {
           tl.fromTo(
             `.s7p-line-${i}`,
             { scaleX: 0 },
-            { scaleX: 1, duration: 0.4 },
+            { scaleX: 1, duration: 0.4, ease: "power2.out" },
             "-=0.3"
           );
         }
       });
 
       tl.to({}, { duration: 0.3 });
+
+      gsap.to(".s7p-bg-glow", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 2,
+        },
+        y: -60,
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -56,6 +86,8 @@ export default function Scene7Process() {
 
   return (
     <section ref={containerRef} className="scene-full">
+      <GradientLight position="center" intensity={0.12} size="60% 45%" className="s7p-bg-glow" />
+
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
         <p className="s7p-label text-xs uppercase tracking-[0.4em] text-primary mb-14 opacity-0 will-change-transform">
           How It Works
@@ -65,15 +97,7 @@ export default function Scene7Process() {
         <div className="hidden md:flex items-center gap-0 max-w-5xl w-full justify-center">
           {steps.map((step, i) => (
             <div key={step.label} className="flex items-center">
-              <div
-                className={`s7p-step-${i} glass-card p-6 text-center opacity-0 will-change-transform w-48 group hover:border-primary/20 transition-all duration-500 hover:-translate-y-1`}
-              >
-                <div className="w-11 h-11 rounded-xl bg-primary/10 mx-auto mb-3 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <step.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-foreground font-display text-lg mb-1">{step.label}</h3>
-                <p className="text-muted-foreground text-[11px] leading-relaxed font-light">{step.desc}</p>
-              </div>
+              <StepCard step={step} index={i} />
               {i < steps.length - 1 && (
                 <div
                   className={`s7p-line-${i} w-12 h-[1px] bg-gradient-to-r from-primary/40 to-primary/10 origin-left will-change-transform mx-1`}
