@@ -14,12 +14,12 @@ export default function Scene1Opening() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial entrance animations
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.fromTo(logoRef.current, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 1.8 })
-        .fromTo(taglineRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2 }, "-=0.6")
-        .fromTo(subtitleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, "-=0.4")
-        .fromTo(scrollHintRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.2");
+      // Initial entrance animations — slower, more cinematic
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+      tl.fromTo(logoRef.current, { opacity: 0, scale: 0.8, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 2.2 })
+        .fromTo(taglineRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.4 }, "-=0.8")
+        .fromTo(subtitleRef.current, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 1.2 }, "-=0.5")
+        .fromTo(scrollHintRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.3");
 
       // Scroll-driven: logo zooms up and fades
       gsap.to(logoRef.current, {
