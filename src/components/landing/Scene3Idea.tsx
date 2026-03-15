@@ -38,6 +38,12 @@ export default function Scene3Idea() {
           background: "radial-gradient(ellipse 70% 50% at 50% 50%, hsla(0,0%,12%,0.5) 0%, transparent 70%)",
         }}
       />
+      <div
+        className="absolute inset-0 s3-bg-glow"
+        style={{
+          background: "radial-gradient(circle 350px at 50% 40%, hsla(0,0%,22%,0.12) 0%, transparent 60%)",
+        }}
+      />
 
       <h2 className="s3-text relative z-20 font-display text-3xl md:text-5xl lg:text-6xl text-foreground text-center max-w-4xl px-6 leading-tight opacity-0 will-change-transform">
         What if every opportunity{" "}
