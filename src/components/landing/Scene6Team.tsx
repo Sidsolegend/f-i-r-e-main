@@ -7,13 +7,13 @@ import GradientLight from "./GradientLight";
 gsap.registerPlugin(ScrollTrigger);
 
 const team = [
-  { name: "Rian", role: "CEO", initial: "R" },
-  { name: "Roshan", role: "COO", initial: "R" },
-  { name: "Ishanth", role: "CFO", initial: "I" },
-  { name: "Rohit", role: "CMO", initial: "R" },
-  { name: "Siddharth", role: "CTO", initial: "S" },
-  { name: "Parthiv", role: "CIO", initial: "P" },
-  { name: "Prajjit", role: "CDO", initial: "P" },
+  { name: "Rian", role: "CEO (Chief Executive Officer)", initial: "R" },
+  { name: "Roshan", role: "COO (Chief Operating Officer)", initial: "R" },
+  { name: "Ishanth", role: "CFO (Chief Financial Officer)", initial: "I" },
+  { name: "Rohit", role: "CMO (Chief Marketing Officer)", initial: "R" },
+  { name: "Siddharth", role: "CTO & Lead Developer (Chief Technology Officer)", initial: "S" },
+  { name: "Parthiv", role: "CSO (Chief Strategy Officer / Growth Lead)", initial: "P" },
+  { name: "Prajjit", role: "CInO (Chief Innovation Officer)", initial: "P" },
 ];
 
 function TeamCard({ member, index }: { member: typeof team[0]; index: number }) {
