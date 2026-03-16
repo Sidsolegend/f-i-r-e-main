@@ -11,8 +11,8 @@ const team = [
   { name: "Roshan", role: "COO (Chief Operating Officer)", initial: "R" },
   { name: "Ishanth", role: "CFO (Chief Financial Officer)", initial: "I" },
   { name: "Rohit", role: "CMO (Chief Marketing Officer)", initial: "R" },
-  { name: "Siddharth", role: "CTO & Lead Developer (Chief Technology Officer)", initial: "S" },
-  { name: "Parthiv", role: "CSO (Chief Strategy Officer / Growth Lead)", initial: "P" },
+  { name: "Siddharth", role: "CTO & Lead Developer", initial: "S" },
+  { name: "Parthiv", role: "CSO (Chief Strategy Officer)", initial: "P" },
   { name: "Prajjit", role: "CInO (Chief Innovation Officer)", initial: "P" },
 ];
 
@@ -30,7 +30,7 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
         <span className="text-lg md:text-xl font-display text-primary font-bold">{member.initial}</span>
       </div>
       <h3 className="text-foreground font-medium text-sm mb-1">{member.name}</h3>
-      <p className="text-primary/80 text-[10px] uppercase tracking-[0.2em] font-medium">{member.role}</p>
+      <p className="text-primary/60 text-[9px] uppercase tracking-[0.15em] font-medium leading-relaxed">{member.role}</p>
     </div>
   );
 }

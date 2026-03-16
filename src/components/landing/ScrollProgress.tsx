@@ -14,15 +14,29 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[200] h-[1px] bg-transparent">
+    <div className="fixed top-0 left-0 right-0 z-[200] h-[2px] bg-transparent">
       <div
-        className="h-full"
+        className="h-full relative"
         style={{
           width: `${progress}%`,
-          background: "linear-gradient(90deg, hsl(0 0% 100% / 0.6), hsl(0 0% 100%))",
-          transition: "width 0.15s cubic-bezier(0.23, 1, 0.32, 1)",
+          background: "linear-gradient(90deg, hsl(0 0% 100% / 0.15), hsl(0 0% 100% / 0.7), hsl(0 0% 100% / 0.9))",
+          transition: "width 0.08s linear",
         }}
-      />
+      >
+        {/* Leading glow dot */}
+        <div
+          className="absolute right-0 top-1/2 -translate-y-1/2"
+          style={{
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            background: "hsl(0 0% 100%)",
+            boxShadow: "0 0 12px 3px hsl(0 0% 100% / 0.5), 0 0 4px 1px hsl(0 0% 100% / 0.8)",
+            opacity: progress > 0.5 ? 1 : 0,
+            transition: "opacity 0.3s ease",
+          }}
+        />
+      </div>
     </div>
   );
 }

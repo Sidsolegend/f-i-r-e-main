@@ -1,3 +1,4 @@
+import { useLenis } from "@/hooks/use-lenis";
 import HiddenNav from "@/components/landing/HiddenNav";
 import ScrollProgress from "@/components/landing/ScrollProgress";
 import CustomCursor from "@/components/landing/CustomCursor";
@@ -14,6 +15,8 @@ import Scene9CTA from "@/components/landing/Scene9CTA";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
+  useLenis();
+
   return (
     <div className="bg-background grain-overlay">
       <CustomCursor />

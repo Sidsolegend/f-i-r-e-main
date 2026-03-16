@@ -25,9 +25,11 @@ export default function HiddenNav() {
     <nav
       onMouseEnter={() => timeoutRef.current && clearTimeout(timeoutRef.current)}
       onMouseLeave={handleLeave}
-      className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-10 py-5 transition-all duration-500 ease-out"
+      className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-10 py-5 transition-all duration-700 ease-out backdrop-blur-md"
       style={{
-        background: "linear-gradient(180deg, hsla(0,0%,0%,0.9) 0%, transparent 100%)",
+        background: visible
+          ? "linear-gradient(180deg, hsla(0,0%,0%,0.85) 0%, hsla(0,0%,0%,0.4) 80%, transparent 100%)"
+          : "transparent",
         transform: visible ? "translateY(0)" : "translateY(-100%)",
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",

@@ -14,14 +14,13 @@ export default function Scene1Opening() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial entrance animations — slower, more cinematic
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
       tl.fromTo(logoRef.current, { opacity: 0, scale: 0.8, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 2.2 })
         .fromTo(taglineRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.4 }, "-=0.8")
         .fromTo(subtitleRef.current, { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 1.2 }, "-=0.5")
         .fromTo(scrollHintRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.3");
 
-      // Scroll-driven: logo zooms up and fades
+      // Scroll-driven parallax exit
       gsap.to(logoRef.current, {
         scrollTrigger: {
           trigger: containerRef.current,
@@ -65,6 +64,10 @@ export default function Scene1Opening() {
         },
         opacity: 0,
       });
+
+      // Ambient floating orbs
+      gsap.to(".s1-orb-1", { y: -30, x: 15, duration: 6, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      gsap.to(".s1-orb-2", { y: 25, x: -20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
     }, containerRef);
 
     return () => ctx.revert();
@@ -73,7 +76,7 @@ export default function Scene1Opening() {
   return (
     <section ref={containerRef} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Layered radial gradient backgrounds */}
+        {/* Background gradient layers */}
         <div
           className="absolute inset-0"
           style={{
@@ -87,11 +90,17 @@ export default function Scene1Opening() {
           }}
         />
 
+        {/* Ambient floating orbs */}
+        <div className="s1-orb-1 absolute w-[300px] h-[300px] rounded-full opacity-[0.03] will-change-transform"
+          style={{ top: "20%", left: "15%", background: "radial-gradient(circle, hsl(0 0% 40%), transparent 70%)" }} />
+        <div className="s1-orb-2 absolute w-[200px] h-[200px] rounded-full opacity-[0.04] will-change-transform"
+          style={{ bottom: "25%", right: "20%", background: "radial-gradient(circle, hsl(0 0% 50%), transparent 70%)" }} />
+
         <img
           ref={logoRef}
           src={fireLogo}
           alt="F.I.R.E"
-          className="relative z-10 w-48 md:w-64 lg:w-80 mb-10 will-change-transform"
+          className="relative z-10 w-48 md:w-64 lg:w-80 mb-10 will-change-transform drop-shadow-2xl"
         />
 
         <h1
