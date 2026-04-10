@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import fireLogo from "@/assets/fire-logo.png";
+import FireLogo from "./FireLogo";
 
 gsap.registerPlugin(ScrollTrigger);
 
