@@ -96,11 +96,9 @@ export default function Scene1Opening() {
         <div className="s1-orb-2 absolute w-[200px] h-[200px] rounded-full opacity-[0.04] will-change-transform"
           style={{ bottom: "25%", right: "20%", background: "radial-gradient(circle, hsl(0 0% 50%), transparent 70%)" }} />
 
-        <img
-          ref={logoRef}
-          src={fireLogo}
-          alt="F.I.R.E"
-          className="relative z-10 w-48 md:w-64 lg:w-80 mb-10 will-change-transform drop-shadow-2xl"
+        <FireLogo
+          imgRef={logoRef}
+          className="relative z-10 w-48 md:w-64 lg:w-80 mb-10 will-change-transform"
         />
 
         <h1
