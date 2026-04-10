@@ -251,91 +251,81 @@
   z-index: 2;
   width: 100%;
   height: auto;
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-              filter 0.4s ease;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              filter 0.35s ease;
   will-change: transform, filter;
 }
 
 .fire-logo-container.is-hovered .fire-logo-img {
-  transform: scale(1.06);
-  filter: drop-shadow(0 0 20px hsl(0 0% 100% / 0.25))
-          drop-shadow(0 0 60px hsl(30 40% 70% / 0.12));
+  transform: scale(1.05);
+  filter: drop-shadow(0 8px 24px hsl(0 0% 0% / 0.5));
 }
 
-/* Soft glow behind logo */
-.fire-logo-glow {
-  position: absolute;
-  inset: -30%;
-  border-radius: 50%;
-  background: radial-gradient(circle, hsl(30 20% 85% / 0.12) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 0;
-  pointer-events: none;
-  animation: none;
-}
-
-.fire-logo-container.is-hovered .fire-logo-glow {
-  opacity: 1;
-  animation: logoPulse 2.5s ease-in-out infinite;
-}
-
-/* Cinematic blur glow */
+.fire-logo-glow,
 .fire-logo-blur {
-  position: absolute;
-  inset: -20%;
-  border-radius: 50%;
-  background: radial-gradient(circle, hsl(0 0% 100% / 0.06) 0%, transparent 60%);
-  filter: blur(30px);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.fire-logo-container.is-hovered .fire-logo-blur {
-  opacity: 1;
+  display: none;
 }
 
 /* Energy streaks */
 .fire-logo-streaks {
   position: absolute;
-  inset: -40%;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
 }
 
 .streak {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 0;
-  background: linear-gradient(to top, transparent, hsl(0 0% 100% / 0.2), transparent);
+  background: linear-gradient(to top, transparent, hsl(0 0% 100% / 0.15), transparent);
   opacity: 0;
-  transition: opacity 0.4s ease, height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-origin: bottom center;
   border-radius: 999px;
+  transition: opacity 0.4s ease-out, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.streak-1 {
+  width: 1.5px; height: 40px;
+  top: -10px; left: 50%;
+  transform: translateX(-50%) translateY(10px) rotate(-15deg);
+  transform-origin: bottom center;
+}
+.streak-2 {
+  width: 1.5px; height: 35px;
+  top: -5px; left: calc(50% + 18px);
+  transform: translateX(-50%) translateY(10px) rotate(20deg);
+  transform-origin: bottom center;
+}
+.streak-3 {
+  width: 1.5px; height: 30px;
+  top: -8px; left: calc(50% - 20px);
+  transform: translateX(-50%) translateY(10px) rotate(-30deg);
+  transform-origin: bottom center;
+}
+.streak-4 {
+  width: 1.5px; height: 25px;
+  top: 0; left: calc(50% + 30px);
+  transform: translateX(-50%) translateY(10px) rotate(35deg);
+  transform-origin: bottom center;
 }
 
 .fire-logo-container.is-hovered .streak {
   opacity: 1;
-  height: 50px;
 }
-
-.streak-1 { transform: translate(-50%, -100%) rotate(-25deg); }
-.streak-2 { transform: translate(-50%, -100%) rotate(10deg); margin-left: 10px; }
-.streak-3 { transform: translate(-50%, -100%) rotate(-10deg); margin-left: -10px; }
-.streak-4 { transform: translate(-50%, -100%) rotate(25deg); }
-
-.fire-logo-container.is-hovered .streak-1 { height: 40px; transition-delay: 0.05s; }
-.fire-logo-container.is-hovered .streak-2 { height: 55px; transition-delay: 0.1s; }
-.fire-logo-container.is-hovered .streak-3 { height: 45px; transition-delay: 0.08s; }
-.fire-logo-container.is-hovered .streak-4 { height: 35px; transition-delay: 0.12s; }
-
-@keyframes logoPulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.08); opacity: 1; }
+.fire-logo-container.is-hovered .streak-1 {
+  transform: translateX(-50%) translateY(-20px) rotate(-15deg);
+  transition-delay: 0s;
+}
+.fire-logo-container.is-hovered .streak-2 {
+  transform: translateX(-50%) translateY(-16px) rotate(20deg);
+  transition-delay: 0.06s;
+}
+.fire-logo-container.is-hovered .streak-3 {
+  transform: translateX(-50%) translateY(-14px) rotate(-30deg);
+  transition-delay: 0.03s;
+}
+.fire-logo-container.is-hovered .streak-4 {
+  transform: translateX(-50%) translateY(-12px) rotate(35deg);
+  transition-delay: 0.09s;
 }
 
 /* Selection color */
